@@ -58,6 +58,7 @@ async def generate_languages(s: Stats) -> None:
 
     progress = ""
     lang_list = ""
+    excluded_lang_list = ""
     sorted_languages = sorted((await s.languages).items(), reverse=True,
                               key=lambda t: t[1].get("size"))
     delay_between = 150
@@ -77,6 +78,17 @@ fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"></path></svg>
 </li>
 
 """
+
+    if len(s._exclude_langs) == 0:
+        output = re.sub(r"{{ excluded_lang_list }}", "None", output)
+    else:
+
+        for lang in s._exclude_langs:
+            excluded_lang_list += f"""
+<li>{lang}</li>
+"""
+        output = re.sub(r"{{ excluded_lang_list }}",
+                        excluded_lang_list, output)
 
     output = re.sub(r"{{ progress }}", progress, output)
     output = re.sub(r"{{ lang_list }}", lang_list, output)
@@ -107,7 +119,7 @@ async def main() -> None:
                      if exclude_langs else None)
     # Convert a truthy value to a Boolean
     ignore_forked_repos = os.getenv("EXCLUDE_FORKED_REPOS")
-    ignore_forked_repos = (not not ignore_forked_repos 
+    ignore_forked_repos = (not not ignore_forked_repos
                            and ignore_forked_repos.strip().lower() != "false")
     async with aiohttp.ClientSession() as session:
         s = Stats(user, access_token, session, exclude_repos=exclude_repos,

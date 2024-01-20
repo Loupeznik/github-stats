@@ -76,6 +76,7 @@ class Queries(object):
                     r = await self.session.get(f"https://api.github.com/{path}",
                                                headers=headers,
                                                params=tuple(params.items()))
+
                 if r.status == 202:
                     # print(f"{path} returned 202. Retrying...")
                     print(f"A path returned 202. Retrying...")
@@ -234,6 +235,7 @@ class Stats(object):
     """
     Retrieve and store statistics about GitHub usage.
     """
+
     def __init__(self, username: str, access_token: str,
                  session: aiohttp.ClientSession,
                  exclude_repos: Optional[Set] = None,
@@ -329,7 +331,8 @@ Languages:
                 for lang in repo.get("languages", {}).get("edges", []):
                     name = lang.get("node", {}).get("name", "Other")
                     languages = await self.languages
-                    if name in self._exclude_langs: continue
+                    if name in self._exclude_langs:
+                        continue
                     if name in languages:
                         languages[name]["size"] += lang.get("size", 0)
                         languages[name]["occurrences"] += 1
@@ -365,7 +368,7 @@ Languages:
         if self._name is not None:
             return self._name
         await self.get_stats()
-        assert(self._name is not None)
+        assert (self._name is not None)
         return self._name
 
     @property
@@ -376,7 +379,7 @@ Languages:
         if self._stargazers is not None:
             return self._stargazers
         await self.get_stats()
-        assert(self._stargazers is not None)
+        assert (self._stargazers is not None)
         return self._stargazers
 
     @property
@@ -387,7 +390,7 @@ Languages:
         if self._forks is not None:
             return self._forks
         await self.get_stats()
-        assert(self._forks is not None)
+        assert (self._forks is not None)
         return self._forks
 
     @property
@@ -398,7 +401,7 @@ Languages:
         if self._languages is not None:
             return self._languages
         await self.get_stats()
-        assert(self._languages is not None)
+        assert (self._languages is not None)
         return self._languages
 
     @property
@@ -408,7 +411,7 @@ Languages:
         """
         if self._languages is None:
             await self.get_stats()
-            assert(self._languages is not None)
+            assert (self._languages is not None)
 
         return {k: v.get("prop", 0) for (k, v) in self._languages.items()}
 
@@ -420,7 +423,7 @@ Languages:
         if self._repos is not None:
             return self._repos
         await self.get_stats()
-        assert(self._repos is not None)
+        assert (self._repos is not None)
         return self._repos
 
     @property
