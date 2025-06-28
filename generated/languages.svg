@@ -122,13 +122,13 @@ div.ellipsis {
 
 <li>SQF</li>
 
-<li>CSS</li>
-
-<li>CMake</li>
+<li>QMake</li>
 
 <li>HTML</li>
 
-<li>QMake</li>
+<li>CSS</li>
+
+<li>CMake</li>
 
 <li>Blade</li>
 
