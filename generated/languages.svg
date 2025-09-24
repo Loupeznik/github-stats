@@ -118,11 +118,7 @@ div.ellipsis {
 <h2 class="languages-excluded-heading">Excluded languages</h2>
 <ul class="excluded-langs">
 
-<li>CMake</li>
-
 <li>CSS</li>
-
-<li>Blade</li>
 
 <li>SQF</li>
 
@@ -130,7 +126,11 @@ div.ellipsis {
 
 <li>QMake</li>
 
+<li>Blade</li>
+
 <li>HTML</li>
+
+<li>CMake</li>
 
 </ul>
 
