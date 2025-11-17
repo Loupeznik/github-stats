@@ -120,19 +120,19 @@ div.ellipsis {
 
 <li>SQF</li>
 
-<li>SCSS</li>
-
-<li>CMake</li>
-
-<li>QMake</li>
+<li>CSS</li>
 
 <li>HTML</li>
+
+<li>QMake</li>
 
 <li>Jinja</li>
 
 <li>Blade</li>
 
-<li>CSS</li>
+<li>SCSS</li>
+
+<li>CMake</li>
 
 </ul>
 
