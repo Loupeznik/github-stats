@@ -122,15 +122,15 @@ div.ellipsis {
 
 <li>HTML</li>
 
-<li>Jinja</li>
-
-<li>SQF</li>
-
 <li>CMake</li>
 
 <li>CSS</li>
 
+<li>Jinja</li>
+
 <li>SCSS</li>
+
+<li>SQF</li>
 
 <li>Blade</li>
 
